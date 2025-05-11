@@ -1,6 +1,6 @@
 # SPI Master and SPI Slave Implementations
-
-# SPI Master Module
+=================
+SPI Master Module.
 The SPI Master module handles:
 
 1. Clock Generation (SCK): Generates the clock signal for synchronous communication.
@@ -13,7 +13,7 @@ The SPI Master module handles:
 
 5. State Machine Logic: Manages states (IDLE, SEND, RECEIVE, DONE) to control the flow.
 
-# SPI Slave Module
+SPI Slave Module
 The SPI Slave module handles:
 
 1. Data Reception (MOSI): Receives data from the master, bit by bit, on the negative edge of SCK.
