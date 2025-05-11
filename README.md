@@ -26,3 +26,15 @@ The SPI Slave module handles:
 3. Chip Select (CS): Communication only happens when CS is active low.
 
 4. Shift Register Logic: Buffers incoming and outgoing data for synchronous transfer.
+
+
+
+Testbench.
+
+1. Initializes the clock and reset signals.
+
+2. Triggers the transmission using the start signal.
+
+3. Waits for the transaction to complete.
+
+4. Displays the sent and received data from both master and slave.
