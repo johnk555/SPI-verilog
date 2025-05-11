@@ -1,0 +1,8 @@
+Use a Verilog simulator like ModelSim, Xilinx Vivado, or Icarus Verilog.
+
+Expected Output:
+
+Master Sent: 10101010
+Slave Sent: 11001100
+Master Received: 11001100
+Slave Received: 10101010
