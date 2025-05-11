@@ -14,7 +14,7 @@ The SPI Master module handles:
 
 5. State Machine Logic: Manages states (IDLE, SEND, RECEIVE, DONE) to control the flow.
 
-
+===================================================================
 
 SPI Slave Module.
 The SPI Slave module handles:
@@ -27,7 +27,7 @@ The SPI Slave module handles:
 
 4. Shift Register Logic: Buffers incoming and outgoing data for synchronous transfer.
 
-
+===================================================================
 
 Testbench.
 
