@@ -1,4 +1,5 @@
-SPI Master and SPI Slave Implementations
+# SPI Master and SPI Slave Implementations
+
 SPI Master Module
 The SPI Master module handles:
 
