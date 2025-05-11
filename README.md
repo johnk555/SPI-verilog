@@ -1,5 +1,6 @@
 # SPI Master and SPI Slave Implementations
 ===================================================================
+
 SPI Master Module.
 The SPI Master module handles:
 
@@ -12,6 +13,8 @@ The SPI Master module handles:
 4. Data Reception (MISO): Receives data from the slave device.
 
 5. State Machine Logic: Manages states (IDLE, SEND, RECEIVE, DONE) to control the flow.
+
+
 
 SPI Slave Module.
 The SPI Slave module handles:
