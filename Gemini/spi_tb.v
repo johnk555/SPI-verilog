@@ -74,7 +74,8 @@ module tb_spi;
 
         // Wait for master to complete transfer
         @(posedge master_transfer_done_tb);
-        $display("Master Transfer 1 Done. Master RX: 0x%h, Slave RX: 0x%h", master_rx_data_tb, slave_rx_data_tb);
+        $display("Master Transfer 1 Done. Master RX (direct): 0x%h, Master RX (wire): 0x%h, Slave RX: 0x%h", UUT_MASTER.rx_data, master_rx_data_tb, slave_rx_data_tb);
+        //$display("Master Transfer 1 Done. Master RX: 0x%h, Slave RX: 0x%h", master_rx_data_tb, slave_rx_data_tb);
 
         #(CLK_PERIOD * 10); // Wait a bit
 
