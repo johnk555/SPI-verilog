@@ -89,7 +89,7 @@ module tb_spi;
         @(posedge master_transfer_done_tb);
         $display("Master Transfer 2 Done. Master RX: 0x%h, Slave RX: 0x%h", master_rx_data_tb, slave_rx_data_tb);
 
-        #(CLK_PERIOD * 10);
+        #(CLK_PERIOD * 5);
 
         $display("--- Starting SPI Transfer 3 (Slave no data) ---");
         master_tx_data_tb = 8'h12; // Master sends 0x12
