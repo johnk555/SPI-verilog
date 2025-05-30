@@ -8,7 +8,7 @@ module spi_master (
     output reg transfer_done, // Indicates transfer is complete
 
     // SPI bus signals
-    output reg sclk,    // Serial Clock
+    output wire sclk,    // Serial Clock
     output reg ss_n,    // Slave Select (active low)
     output reg mosi,    // Master Out Slave In
     input miso,         // Master In Slave Out
@@ -30,7 +30,7 @@ module spi_master (
 
     // Clock divider for SCLK (adjust 'SCLK_DIV_FACTOR' for desired SCLK frequency)
     // SCLK_freq = clk_freq / (2 * SCLK_DIV_FACTOR)
-    parameter SCLK_DIV_FACTOR = 10; // For example, if clk = 100MHz, SCLK = 5MHz
+    parameter SCLK_DIV_FACTOR = 2; // For example, if clk = 100MHz, SCLK = 5MHz
     reg [SCLK_DIV_FACTOR-1:0] sclk_counter;
     reg sclk_toggle;
 
@@ -39,23 +39,22 @@ module spi_master (
         if (!rst_n) begin
             sclk_counter <= 0;
             sclk_toggle <= 0;
-            sclk <= 0;
         end else begin
             if (current_state == SHIFT_DATA) begin // Only generate SCLK during data transfer
                 if (sclk_counter == SCLK_DIV_FACTOR - 1) begin
                     sclk_counter <= 0;
-                    sclk_toggle <= ~sclk_toggle;
-                    sclk <= sclk_toggle; // Toggle SCLK
+                    sclk_toggle <= ~sclk_toggle; // This register will flip its value
                 end else begin
                     sclk_counter <= sclk_counter + 1;
                 end
             end else begin
-                sclk <= 0; // SCLK low when idle
                 sclk_counter <= 0;
-                sclk_toggle <= 0;
+                sclk_toggle <= 0; // Keep sclk_toggle low when idle
             end
         end
     end
+    
+    assign sclk = sclk_toggle; // sclk output will directly follow sclk_toggle
 
     // --- State Register ---
     always @(posedge clk or negedge rst_n) begin
