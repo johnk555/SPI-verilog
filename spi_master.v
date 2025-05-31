@@ -79,7 +79,7 @@ module spi_master (
                 if (start_transfer) begin
                     next_state       = START_SS;
                     master_tx_data   = tx_data; // Load data to send
-                    master_rx_data   = 8'b0;    // Clear received data register
+                    //master_rx_data   = 8'b0;    // Clear received data register
                     bit_counter      = 0;
                 end
                 ss_n = 1; // SS_n high
@@ -141,6 +141,7 @@ module spi_master (
                 rx_data <= master_rx_data;
             //end else if (current_state == IDLE) begin
             end else if (start_transfer == 1'b1) begin // Clear only when a new transfer begins
+                master_rx_data <= 8'b0;
                 rx_data <= 8'b0; // Clear output when idle
             end
         end
